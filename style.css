@@ -1,0 +1,43 @@
+body {
+    background-color: #B3DFDA;
+    color: #757474;
+}
+
+.questionCard {
+    max-height: 1000px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 200px;
+    background-color: #C1DDAE;
+    border-radius: 15px;
+    border-right: solid darkgray 5px;
+    border-bottom: solid darkgray 5px;
+}
+
+.titleCard {
+    display: block;
+    margin-top: 0px;
+    padding: 20px;
+}
+
+h1 {
+    margin-top: 0px;
+}
+
+.ques-statement {
+    display: block;
+    text-align: center;
+    padding: 20px;
+    color: #757474;
+}
+
+.navButton {
+    text-align: center;
+    padding: 5px 20px;
+    margin-left: 20px;
+    background-color: #757474;
+    border-color: #757474;
+}
+
+
+
