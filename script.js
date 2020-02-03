@@ -1,4 +1,6 @@
  $("document").ready(function(){
+    var timer;
+    // questions and answers array
     var questions = [
        {
          ques1: "What does HTML stand for?",
@@ -25,24 +27,21 @@
        {
          ques4: "In Java, a method is a container that holds classes.",
          ansA: "A. True",
-         ansB: "B. False",
+         ansB: "B. False"
+         // ansB: "B. False"
        },
        {
-         ques5: "What does HTML stand for?",
-         ansA: "A. Hyper Trainer Marking Language",
-         ansB: "B. Hyper Text Marketing Language",
-         ansC: "C. Hyper Text Markup Language",
-         ansD: "D. Hyper Text Markup Leveler"
+         ques5: "Is this the correct way to make an object in Java? Class class = new Class();",
+         ansA: "A. True",
+         ansB: "B. False"
+         // ansA: "A. True"
        }
 
-    ]
+    ];
 
     $("#buttonInfo").on("click", function(){
         $(".buttonSection").css("display", "none")
     })
 
-    function question1(){
-       $(".ques-statemnt").text("");
-       $(".ques-statemet")
-    }
+
  })
