@@ -38,6 +38,10 @@ h1 {
     margin: 20px;
 }
 
+.radiobtn{
+    background-color: darkgray;
+}
+
 .response {
     display: block;
     max-width: 100%;
