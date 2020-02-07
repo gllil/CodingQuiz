@@ -44,27 +44,33 @@
          // ansA: "A. True"
        }
 
-    ]; console.log(questions)
+    ];
+    //  console.log(questions)
+
+
     $(".ansSelections").css("display", "none");
     $("#buttonInfo").on("click", function(e){
       e.preventDefault();
+      $(".timeLeft").html("<h3>Seconds Left</h3>")
+      $("#buttonInfo").html("Submit");
+      $(".titleCard").html("<h1>Question 1</h1>");
+      $(".ansSelections").css("display", "block");
       for(var i = 0; i < questions.length; i++){
-        $(".timeLeft").html("<h3>Seconds Left</h3>")
-        $("#buttonInfo").html("Submit");
-        $(".titleCard").html("<h1>Question 1</h1>");
-        $(".ansSelections").css("display", "block");
-        var question1 = questions[0];
-        $(".question").html(question1.ques);
-        $("#a").html(question1.ansA);
-        $("#b").html(question1.ansB);
-        $("#c").html(question1.ansC);
-        $("#d").html(question1.ansD);
+
+        var ranQues = Math.floor(Math.random() * questions.length);
+        $(".question").html(questions[ranQues].ques);
+        $("#a").html(questions[ranQues].ansA);
+        $("#b").html(questions[ranQues].ansB);
+        $("#c").html(questions[ranQues].ansC);
+        $("#d").html(questions[ranQues].ansD);
+
+        
 
 
 
           $("#buttonInfo").on("click", function(e){
             e.preventDefault();          
-          $("#radios").prop("checked", true);
+          $("option1").prop("checked", function(e){
           if(question1.ansC === question1.correctAns){
             alert("Correct");
             localStorage.setItem("correct");
@@ -72,7 +78,7 @@
             alert("Wrong");
             localStorage.setItem("wrong");
           };
-         
+        });
         });
       
 
