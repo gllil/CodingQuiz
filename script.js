@@ -14,32 +14,38 @@ $(document).ready(function () {
     },
     {
       ques: "<h1>Text</h1> is the correct way of making a header in HTML.",
-      ansA: "A. True",
-      ansB: "B. False",
-      correctAns: "A. True"
+      answers: [
+        "A. True",
+        "B. False",
+      ],
+      correctAns: 0
       // ansA: "A. True"
     },
     {
       ques: "Which of the following is the correct way of making a string in Java?",
-      ansA: "A. String 'Text';",
-      ansB: "B. String text = 'text';",
-      ansC: "C. String text = 'text'",
-      ansD: "D. String text = (text);",
-      correctAns: "B. String text = 'text';"
+      answers: [
+        "A. String 'Text';",
+        "B. String text = 'text';",
+        "C. String text = 'text'",
+        "D. String text = (text);"
+      ],
+      correctAns: 1
       // ansB: "B. String text = 'text';"
     },
     {
       ques: "In Java, a method is a container that holds classes.",
-      ansA: "A. True",
-      ansB: "B. False",
-      correctAns: "B. False"
+      answers: [
+        "A. True",
+        "B. False"],
+      correctAns: 1
       // ansB: "B. False"
     },
     {
       ques: "Is this the correct way to make an object in Java? Class class = new Class();",
-      ansA: "A. True",
-      ansB: "B. False",
-      correctAns: "A. True"
+      answers: [
+        "A. True",
+        "B. False"],
+      correctAns: 0
       // ansA: "A. True"
     }
   ];
