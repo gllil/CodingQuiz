@@ -36,7 +36,8 @@ $(document).ready(function () {
       ques: "In Java, a method is a container that holds classes.",
       answers: [
         "A. True",
-        "B. False"],
+        "B. False",
+      ],
       correctAns: 1
       // ansB: "B. False"
     },
@@ -44,7 +45,8 @@ $(document).ready(function () {
       ques: "Is this the correct way to make an object in Java? Class class = new Class();",
       answers: [
         "A. True",
-        "B. False"],
+        "B. False",
+      ],
       correctAns: 0
       // ansA: "A. True"
     }
@@ -52,11 +54,46 @@ $(document).ready(function () {
 
   var interval;
   var count = 90;
+  var currentQuestionIndex = 0;
 
-  $("#buttonInfo").on("click", function (e) {
+  $("#start-quiz").on("click", function (e) {
     e.preventDefault();
 
-    $(".timeLeft").html("<h3>Seconds Left</h3>")
+    $('#start-screen').hide();
+
+    displayQuestion();
+
+    $('.ansSelections').show();
+  });
+
+  function displayQuestion() {
+    var currentQuestion = questions[currentQuestionIndex];
+
+    // Create a h2 that holds the question text.  currentQuestion.ques
+    // Loop though answer array   currentQuestion.answers is what we loop through.
+      // Create a button for the answer.
+      // Add the text of the answer.
+      // Add class for that button.
+    // Clear the ansSelections inner html.
+    // Append the new elements.
+  }
+
+
+  function timerStart() {
+    interval = setInterval(function () {
+      if (count - 1 !== -1) {
+        count--;
+        $(".timer").html(count);
+      } else {
+        clearInterval(interval);
+      };
+    }, 1000);
+  };
+});
+
+
+/**
+     $(".timeLeft").html("<h3>Seconds Left</h3>")
     $("#buttonInfo").html("Submit");
     $(".titleCard").html("<h1>Question 1</h1>");
     $(".ansSelections").css("display", "block");
@@ -91,19 +128,4 @@ $(document).ready(function () {
 
     };
     timerStart();
-  });
-
-  function timerStart() {
-
-    interval = setInterval(function () {
-      if (count - 1 !== -1) {
-        count--;
-        $(".timer").html(count);
-      } else {
-        clearInterval(interval);
-      };
-    }, 1000);
-  };
-
-
-});
+ */
