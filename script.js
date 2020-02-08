@@ -1,61 +1,60 @@
 
+var questions = [
+  {
+    ques: "What does HTML stand for?",
+    answers: [
+      "A. Hyper Trainer Marking Language",
+      "B. Hyper Text Marketing Language",
+      "C. Hyper Text Markup Language",
+      "D. Hyper Text Markup Leveler",
+    ],
+    correctAns: 2
+  },
+  {
+    ques: "<h1>Text</h1> is the correct way of making a header in HTML.",
+    answers: [
+      "A. True",
+      "B. False",
+    ],
+    correctAns: 0
+    // ansA: "A. True"
+  },
+  {
+    ques: "Which of the following is the correct way of making a string in Java?",
+    answers: [
+      "A. String 'Text';",
+      "B. String text = 'text';",
+      "C. String text = 'text'",
+      "D. String text = (text);"
+    ],
+    correctAns: 1
+    // ansB: "B. String text = 'text';"
+  },
+  {
+    ques: "In Java, a method is a container that holds classes.",
+    answers: [
+      "A. True",
+      "B. False",
+    ],
+    correctAns: 1
+    // ansB: "B. False"
+  },
+  {
+    ques: "Is this the correct way to make an object in Java? Class class = new Class();",
+    answers: [
+      "A. True",
+      "B. False",
+    ],
+    correctAns: 0
+    // ansA: "A. True"
+  }
+];
+
+var interval;
+var count = 90;
+var currentQuestionIndex = 0;
+
 $(document).ready(function () {
-  // questions and answers array
-  var questions = [
-    {
-      ques: "What does HTML stand for?",
-      answers: [
-        "A. Hyper Trainer Marking Language",
-        "B. Hyper Text Marketing Language",
-        "C. Hyper Text Markup Language",
-        "D. Hyper Text Markup Leveler",
-      ],
-      correctAns: 2
-    },
-    {
-      ques: "<h1>Text</h1> is the correct way of making a header in HTML.",
-      answers: [
-        "A. True",
-        "B. False",
-      ],
-      correctAns: 0
-      // ansA: "A. True"
-    },
-    {
-      ques: "Which of the following is the correct way of making a string in Java?",
-      answers: [
-        "A. String 'Text';",
-        "B. String text = 'text';",
-        "C. String text = 'text'",
-        "D. String text = (text);"
-      ],
-      correctAns: 1
-      // ansB: "B. String text = 'text';"
-    },
-    {
-      ques: "In Java, a method is a container that holds classes.",
-      answers: [
-        "A. True",
-        "B. False",
-      ],
-      correctAns: 1
-      // ansB: "B. False"
-    },
-    {
-      ques: "Is this the correct way to make an object in Java? Class class = new Class();",
-      answers: [
-        "A. True",
-        "B. False",
-      ],
-      correctAns: 0
-      // ansA: "A. True"
-    }
-  ];
-
-  var interval;
-  var count = 90;
-  var currentQuestionIndex = 0;
-
   $("#start-quiz").on("click", function (e) {
     e.preventDefault();
 
@@ -68,23 +67,58 @@ $(document).ready(function () {
 
   function displayQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
-    var mainQues = $("<h2>").text(currentQuestion.ques);
- 
+    
+    $(".ansSelections").empty();
+
     // Create a h2 that holds the question text.  currentQuestion.que
+    var mainQues = $("<h2>").text(currentQuestion.ques);
     $(".ansSelections").append(mainQues);
+
     // Loop though answer array   currentQuestion.answers is what we loop through.
     for (var i = 0; i < currentQuestion.answers.length; i++){
       var answerBtn = $("<button>").text(currentQuestion.answers[i]);
-      answerBtn.addClass("btn btn-block btn-primary");
+
+      answerBtn.addClass("btn btn-block btn-primary answer");
+      answerBtn.attr('data-index', i);
+
       $(".ansSelections").append(answerBtn);
     }
-      // Create a button for the answer.
-      // Add the text of the answer.
-      // Add class for that button.
-    // Clear the ansSelections inner html.
-    // Append the new elements.
   }
 
+  $('.ansSelections').on('click', '.answer', function() {
+    console.log($(this));
+
+    var dataIndex = $(this).attr('data-index');
+    var currentQuestion = questions[currentQuestionIndex];
+
+    if (currentQuestion.correctAns !== parseInt(dataIndex)) {
+      // Take away 10 seconds from the count.
+      count -= 10;
+    }
+
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex < questions.length) {
+      displayQuestion();
+    }
+    else {
+      endQuiz();
+    }
+  })
+
+  function endQuiz() {
+    clearInterval(interval);
+
+    currentQuestionIndex = 0;
+
+    // Stop the time.
+    // Show the score inside of the end quiz screen.
+
+    $('#question-screen').hide();
+    $('#end-quiz-screen').show();
+
+    console.log('End of quiz');
+  }
 
   function timerStart() {
     interval = setInterval(function () {
@@ -92,8 +126,8 @@ $(document).ready(function () {
         count--;
         $(".timer").html(count);
       } else {
-        clearInterval(interval);
-      };
+        endQuiz();
+      }
     }, 1000);
   };
 });
