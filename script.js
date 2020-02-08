@@ -68,9 +68,16 @@ $(document).ready(function () {
 
   function displayQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
-
-    // Create a h2 that holds the question text.  currentQuestion.ques
+    var mainQues = $("<h2>").text(currentQuestion.ques);
+ 
+    // Create a h2 that holds the question text.  currentQuestion.que
+    $(".ansSelections").append(mainQues);
     // Loop though answer array   currentQuestion.answers is what we loop through.
+    for (var i = 0; i < currentQuestion.answers.length; i++){
+      var answerBtn = $("<button>").text(currentQuestion.answers[i]);
+      answerBtn.addClass("btn btn-block btn-primary");
+      $(".ansSelections").append(answerBtn);
+    }
       // Create a button for the answer.
       // Add the text of the answer.
       // Add class for that button.
